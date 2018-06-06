@@ -4,8 +4,6 @@ import mongoengine
 
 
 class Package(mongoengine.Document):
-    __tablename__ = 'packages'
-
     id = mongoengine.StringField(primary_key=True)
     created_date = mongoengine.DateTimeField(default=datetime.datetime.now)
     summary = mongoengine.StringField()

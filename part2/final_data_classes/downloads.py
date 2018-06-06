@@ -3,8 +3,6 @@ import mongoengine
 
 
 class Download(mongoengine.Document):
-    __tablename__ = 'downloads'
-
     created_date = mongoengine.DateTimeField(default=datetime.datetime.now)
 
     package_id = mongoengine.StringField()
