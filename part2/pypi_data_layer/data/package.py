@@ -23,8 +23,15 @@ class Package(mongoengine.Document):
     languages = mongoengine.ListField(mongoengine.StringField())
 
     maintainers = mongoengine.ListField(mongoengine.ObjectIdField())
+    # health = mongoengine.EmbeddedDocumentField(HealthDoc)
 
     meta = {
         'db_alias': 'core',
-        'collection': 'packages'
+        'collection': 'packages',
+        'indexes': [
+            'author_email',
+            'created_date',
+            'license',
+            # 'languages.name'
+        ]
     }

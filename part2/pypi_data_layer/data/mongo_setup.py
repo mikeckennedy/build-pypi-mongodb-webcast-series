@@ -10,7 +10,7 @@ import mongoengine
 
 def global_init(user=None, password=None, port=27017,
                 server='localhost', use_ssl=True,
-                db_name='pypi_demo2'):
+                db_name='pypi_demo_full'):
     if user or password:
         data = dict(
             username=user,
