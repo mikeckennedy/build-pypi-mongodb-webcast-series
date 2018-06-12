@@ -51,3 +51,11 @@ git clone https://github.com/mikeckennedy/build-pypi-mongodb-webcast-series.git
 cd /apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f
 pip install -r requirements.txt
 
+# Copy and enable the daemon
+sudo cp /apps/build-pypi-mongodb-webcast-series/part3/server_config/pypi.service /etc/systemd/system/
+
+
+sudo systemctl start pypi
+sudo systemctl status pypi
+sudo systemctl enable pypi
+

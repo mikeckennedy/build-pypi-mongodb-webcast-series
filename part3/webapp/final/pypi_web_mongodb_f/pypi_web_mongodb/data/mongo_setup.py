@@ -3,8 +3,14 @@ import ssl
 import mongoengine
 
 
+# import pymongo
+# pymongo.MongoClient()
+
 def global_init(user=None, password=None, port=27017, server='localhost', use_ssl=True, db_name='pypi_demo'):
     if user or password:
+        if server != 'localhost' and not server.startswith('mongodb+srv://'):
+            server = 'mongodb+srv://' + server
+
         data = dict(
             username=user,
             password=password,

@@ -1,3 +1,6 @@
+import json
+import os
+
 from pyramid.config import Configurator
 
 # noinspection PyUnresolvedReferences
@@ -43,5 +46,26 @@ def init_includes(config):
 
 
 def init_db(config):
-    db_name = config.get_settings().get('db_name')
-    mongo_setup.global_init(db_name=db_name)
+    db_name = config.get_settings().get('database_name', 'pypi_demo')
+    server = config.get_settings().get('database_server', 'localhost')
+    use_database_auth = config.get_settings().get('use_database_auth') == 'True'
+
+    file = os.path.abspath(os.path.join(
+        os.path.dirname(__file__),
+        '..',
+        'db_account.json')
+    )
+    user = None
+    password = None
+    if os.path.exists(file) and use_database_auth:
+        with open(file, 'r', encoding='utf-8') as fin:
+            auth_data = json.load(fin)
+            user = auth_data.get('user')
+            password = auth_data.get('password')
+
+    if use_database_auth and (not user or not password):
+        raise Exception("Use auth is true but no auth data in file at: {}".format(file))
+
+    mongo_setup.global_init(db_name=db_name,
+                            user=user, password=password,
+                            server=server)

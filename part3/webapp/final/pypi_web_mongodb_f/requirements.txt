@@ -37,3 +37,5 @@ WebTest==2.0.29
 zope.deprecation==4.3.0
 zope.interface==4.5.0
 uwsgi==2.0.17
+dnspython==1.15.0
+

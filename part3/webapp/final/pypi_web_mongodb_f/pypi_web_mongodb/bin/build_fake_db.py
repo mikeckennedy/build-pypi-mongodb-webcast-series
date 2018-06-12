@@ -18,9 +18,9 @@ from pypi_web_mongodb.data.users import User
 
 def main():
     # db = 'pypi_demo'
-    db = 'pypi_demo_full'
-    # data_path = '/Users/mkennedy/github/mk/pypi-data-exporter/data/tops/'
-    data_path = '/Users/mkennedy/Desktop/data/project_details'
+    db = 'pypi_demo'
+    data_path = '/Users/mkennedy/github/mk/pypi-data-exporter/data/tops/'
+    #data_path = '/Users/mkennedy/Desktop/data/project_details'
 
     init_db(db)
     if User.objects().count():
@@ -338,7 +338,9 @@ def try_int(text) -> int:
 
 
 def init_db(db_name):
-    mongo_setup.global_init(db_name=db_name)
+    mongo_setup.global_init(
+        server='mongodb+srv://pypi_db_admin:8hw8fxrtDVNd6tvtCRczEJ)oVuaaeUk6@devpypiclustertest-ib2xp.mongodb.net',
+        db_name=db_name)
 
 
 def get_file_names(data_path: str) -> List[str]:
