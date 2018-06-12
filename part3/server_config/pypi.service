@@ -1,46 +1,16 @@
-#! bash
+[Unit]
+Description=uWSGI PyPI server instance
+After=syslog.target
 
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install fail2ban -y
+[Service]
+ExecStart=/apps/venv/bin/uwsgi -H /apps/venv --ini-paste /apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f/production.ini
+ExecStop=SIGQUIT
+RuntimeDirectory=/apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f/
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
 
-
-# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-# 16.04
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
-sudo apt update -y
-sudo apt install mongodb-org-shell=3.6.5 mongodb-org-tools=3.6.5 -y
-
-# Install some OS dependencies:
-sudo apt-get install --no-install-recommends -y -q build-essential git python3-dev
-sudo apt-get install --no-install-recommends -y -q python3-pip wget
-sudo apt-get install --no-install-recommends -y -q unzip
-sudo apt-get install --no-install-recommends -y -q nginx
-# for gzip support in uwsgi
-sudo apt-get install --no-install-recommends -y -q libpcre3-dev libz-dev nload
-
-
-
-# Basic git setup
-git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=720000'
-
-git config --global user.email "you@email.com"
-git config --global user.name "Your name"
-
-# Web app file structure
-sudo mkdir /apps
-sudo chmod 777 /apps
-mkdir /apps/logs
-mkdir /apps/logs/pypi_web
-mkdir /apps/logs/pypi_web/app_log
-cd /apps
-
-
-
-
-
-# Mongo user:
-# pypi_db_admin
-# 8hw8fxrtDVNd6tvtCRczEJ)oVuaaeUk6
+[Install]
+WantedBy=multi-user.target
