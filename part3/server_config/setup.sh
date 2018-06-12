@@ -65,3 +65,5 @@ sudo systemctl enable pypi
 sudo rm /etc/nginx/sites-enabled/default
 
 sudo cp /apps/build-pypi-mongodb-webcast-series/part3/server_config/pypi.nginx /etc/nginx/sites-enabled/pypi.nginx
+sudo update-rc.d nginx enable
+sudo service nginx restart
