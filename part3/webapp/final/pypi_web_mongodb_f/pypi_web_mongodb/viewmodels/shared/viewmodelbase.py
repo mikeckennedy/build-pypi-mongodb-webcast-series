@@ -10,7 +10,7 @@ class ViewModelBase:
         self.request_dict = request_dict.create(request)
         self.error = None
 
-        self.user_svc: UserSession = UserSession(request)
+        self.user_svc = UserSession(request)
         self.user = self.user_svc.user
 
     def to_dict(self) -> dict:
