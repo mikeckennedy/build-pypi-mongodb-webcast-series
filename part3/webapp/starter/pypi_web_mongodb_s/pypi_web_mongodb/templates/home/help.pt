@@ -1,0 +1,30 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+        <div class="content" style="text-align: center;">
+
+
+            <h1>
+                PyPI Help
+            </h1>
+
+            <div class="project-list container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        View the
+                        <a href="https://pypi.org/help/" target="_blank">actual help page</a> on
+                        <a href="https://pypi.org/help/" target="_blank">pypi.org</a>.
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div metal:fill-slot="head">
+        <link href="/static/css/home.css" rel="stylesheet">
+    </div>
+</div>
