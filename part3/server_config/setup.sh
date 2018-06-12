@@ -40,7 +40,7 @@ cd /apps
 cd /apps
 python3 -m venv venv
 source venv/bin/activate
-pip install --upgrade pip setuptools
+pip install --upgrade pip setuptools httpie
 
 
 # clone the repo:
@@ -59,3 +59,9 @@ sudo systemctl start pypi
 sudo systemctl status pypi
 sudo systemctl enable pypi
 
+# Setup the public facing server (NGINGX)
+
+# CAREFUL HERE. If you are using default, maybe skip this
+sudo rm /etc/nginx/sites-enabled/default
+
+sudo cp /apps/build-pypi-mongodb-webcast-series/part3/server_config/pypi.nginx /etc/nginx/sites-enabled/pypi.nginx
