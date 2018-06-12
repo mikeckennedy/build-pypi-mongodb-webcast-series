@@ -8,7 +8,7 @@ class ViewModelBase:
     def __init__(self, request: Request):
         self.request = request
         self.request_dict = request_dict.create(request)
-        self.error: str = None
+        self.error = None
 
         self.user_svc: UserSession = UserSession(request)
         self.user = self.user_svc.user
