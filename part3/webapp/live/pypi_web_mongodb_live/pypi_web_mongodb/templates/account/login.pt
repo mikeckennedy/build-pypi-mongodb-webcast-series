@@ -1,0 +1,33 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+        <div class="content page login-page" style="text-align: center;">
+
+
+            <div class="login account-well">
+                <h1>Log into your account</h1>
+                <form action="" method="POST">
+                    <input type="text" class="form-control" placeholder="email address"
+                           name="email" required>
+                    <input type="password" class="form-control" placeholder="password"
+                           required name="password">
+                    <div class="error-msg error-msg-block" tal:condition="error">
+                        ${error}
+                    </div>
+                    <button type="submit" class="btn btn-success">Login</button>
+                </form>
+                    <div class="final-message">
+                        You can also
+                        <a href="/account/register">register</a> or
+                        <a href="/account/reset_password">reset your password</a>.
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div metal:fill-slot="head">
+        <link href="/static/css/account.css" rel="stylesheet">
+    </div>
+</div>

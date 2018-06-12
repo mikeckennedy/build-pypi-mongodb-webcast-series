@@ -1,0 +1,23 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+        <div class="content page"
+             style="text-align: center; background-color: white; padding: 50px;">
+
+
+            <h1>
+                Your account
+            </h1>
+            <br>
+            <br>
+            <div>
+                Would have details like:<br>
+                <br>
+                Your name: ${user.name}<br>
+                Your email: ${user.email}<br>
+            </div>
+
+        </div>
+    </div>
+
+</div>

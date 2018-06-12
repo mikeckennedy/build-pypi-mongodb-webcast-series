@@ -1,0 +1,37 @@
+<div metal:use-macro="load: ../shared/_layout.pt">
+    <div metal:fill-slot="content">
+
+        <div class="content page login-page" style="text-align: center;">
+
+
+            <div class="login account-well">
+                <h1>Create an account</h1>
+                <form action="" method="POST">
+                    <input type="text" class="form-control" placeholder="first name"
+                           name="first_name" required>
+                    <input type="text" class="form-control" placeholder="last name"
+                           name="last_name" required>
+                    <input type="text" class="form-control" placeholder="email address"
+                           name="email" required>
+                    <input type="password" class="form-control" placeholder="password"
+                           required name="password">
+                    <div class="error-msg error-msg-block" tal:condition="error">
+                            ${error}
+                    </div>
+                    <button type="submit" class="btn btn-danger">Register</button>
+
+                </form>
+                <div class="final-message">
+                    Already have an account?
+                    <a href="/account/login">Login</a>.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div metal:fill-slot="head">
+        <link href="/static/css/account.css" rel="stylesheet">
+    </div>
+</div>
