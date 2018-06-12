@@ -348,7 +348,7 @@ def try_int(text) -> int:
 
 
 def init_db(db_name):
-    use_atlas = False
+    use_atlas = '--use_atlas' in sys.argv
 
     file = os.path.abspath(os.path.join(
         os.path.dirname(__file__),
