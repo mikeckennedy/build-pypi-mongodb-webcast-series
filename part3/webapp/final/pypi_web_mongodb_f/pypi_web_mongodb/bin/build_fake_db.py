@@ -17,10 +17,20 @@ from pypi_web_mongodb.data.users import User
 
 
 def main():
-    # db = 'pypi_demo'
+    # Top 100 version:
     db = 'pypi_demo'
-    data_path = '/Users/mkennedy/github/mk/pypi-data-exporter/data/tops/'
-    #data_path = '/Users/mkennedy/Desktop/data/project_details'
+    data_path = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            '..', '..', '..', '..', '..', '..',
+            'part2',
+            'data',
+            'tops'
+        ))
+
+    # All 140k packages:
+    # db = 'pypi_demo_full'
+    # data_path = '/Users/mkennedy/Desktop/data/project_details'
 
     init_db(db)
     if User.objects().count():
@@ -338,9 +348,29 @@ def try_int(text) -> int:
 
 
 def init_db(db_name):
-    mongo_setup.global_init(
-        server='mongodb+srv://pypi_db_admin:8hw8fxrtDVNd6tvtCRczEJ)oVuaaeUk6@devpypiclustertest-ib2xp.mongodb.net',
-        db_name=db_name)
+    use_atlas = False
+
+    file = os.path.abspath(os.path.join(
+        os.path.dirname(__file__),
+        '..',
+        '..',
+        'db_account.json')
+    )
+    user = None
+    password = None
+    if os.path.exists(file) and use_atlas:
+        with open(file, 'r', encoding='utf-8') as fin:
+            auth_data = json.load(fin)
+            user = auth_data.get('user')
+            password = auth_data.get('password')
+
+    if use_atlas and user:
+        mongo_setup.global_init(
+            server='devpypiclustertest-ib2xp.mongodb.net',
+            db_name=db_name,
+            user=user, password=password)
+    else:
+        mongo_setup.global_init(db_name=db_name)
 
 
 def get_file_names(data_path: str) -> List[str]:
