@@ -1,0 +1,4 @@
+# Run this command from this directory.
+# Will delete any existing DB named pypi_demo, so be careful there.
+
+mongorestore --drop --db pypi_demo ./pypi_demo
