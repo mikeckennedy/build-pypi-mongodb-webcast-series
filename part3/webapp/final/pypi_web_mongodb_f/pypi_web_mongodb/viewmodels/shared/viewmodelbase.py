@@ -7,7 +7,7 @@ from pypi_web_mongodb.infrastructure.user_session import UserSession
 class ViewModelBase:
     def __init__(self, request: Request):
         self.request = request
-        self.request_dict: dict = request_dict.create(request)
+        self.request_dict = request_dict.create(request)
         self.error: str = None
 
         self.user_svc: UserSession = UserSession(request)
