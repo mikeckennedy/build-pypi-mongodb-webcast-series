@@ -4,7 +4,6 @@ After=syslog.target
 
 [Service]
 ExecStart=/apps/venv/bin/uwsgi -H /apps/venv --ini-paste /apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f/production.ini
-ExecStop=SIGQUIT
 RuntimeDirectory=/apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f/
 Restart=always
 KillSignal=SIGQUIT
