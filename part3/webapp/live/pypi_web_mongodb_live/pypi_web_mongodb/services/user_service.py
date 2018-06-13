@@ -5,18 +5,15 @@ from pypi_web_mongodb.data.users import User
 
 
 def user_count() -> int:
-    # TODO: Return the count of users
-    return 0
+    return User.objects().count()
 
 
 def user_by_id(user_id) -> Optional[User]:
-    # TODO: Find user by id
-    return None
+    return User.objects(id=user_id).first()
 
 
 def user_by_email(email: str) -> Optional[User]:
-    # TODO: Find user by email
-    return None
+    return User.objects(email=email).first()
 
 
 def create_account(full_name: str, email: str, plain_text_password: str) -> Optional[User]:
@@ -28,10 +25,17 @@ def create_account(full_name: str, email: str, plain_text_password: str) -> Opti
     # Normalize the email
     email = email.strip().lower()
 
-    # TODO: Verify the user does not already exist.
-    # TODO: Create a user, set email, name, password
-    # TODO: Save and return
-    return None
+    found = user_by_email(email)
+    if found:
+        raise Exception("User already exists")
+
+    user = User()
+    user.email = email
+    user.name =full_name
+    user.hashed_password = hash_text(plain_text_password)
+
+    user.save()
+    return user
 
 
 def login_account(email: str, plain_text_password: str) -> Optional[User]:

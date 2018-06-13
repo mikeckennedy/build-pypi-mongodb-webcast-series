@@ -366,7 +366,7 @@ def init_db(db_name):
 
     if use_atlas and user:
         mongo_setup.global_init(
-            server='devpypiclustertest-ib2xp.mongodb.net',
+            server='cluster0-ib2xp.mongodb.net',
             db_name=db_name,
             user=user, password=password)
     else:
