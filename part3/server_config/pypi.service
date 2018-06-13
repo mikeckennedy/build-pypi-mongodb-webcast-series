@@ -3,8 +3,8 @@ Description=uWSGI PyPI server instance
 After=syslog.target
 
 [Service]
-ExecStart=/apps/venv/bin/uwsgi -H /apps/venv --ini-paste /apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f/production.ini
-RuntimeDirectory=/apps/build-pypi-mongodb-webcast-series/part3/webapp/final/pypi_web_mongodb_f
+ExecStart=/apps/venv/bin/uwsgi -H /apps/venv --ini-paste /apps/build-pypi-mongodb-webcast-series/part3/webapp/live/pypi_web_mongodb_live/production.ini
+RuntimeDirectory=/apps/build-pypi-mongodb-webcast-series/part3/webapp/live/pypi_web_mongodb_live
 Restart=always
 KillSignal=SIGQUIT
 Type=notify
