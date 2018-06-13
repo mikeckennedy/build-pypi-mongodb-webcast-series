@@ -47,11 +47,14 @@ def login_account(email: str, plain_text_password: str) -> Optional[User]:
     # Normalize the email
     email = email.strip().lower()
 
-    # TODO: Get the user by email (return if missing)
-    # TODO: Verify the hash (password)
+    found = User.objects(email=email).first()
+    if not found:
+        return None
 
-    # TODO: Return user
-    return None
+    if not verify_hash(found.hashed_password, plain_text_password):
+        return None
+
+    return found
 
 
 def hash_text(text: str) -> str:
