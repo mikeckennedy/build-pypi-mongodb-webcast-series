@@ -60,6 +60,7 @@ sudo systemctl status pypi
 sudo systemctl enable pypi
 
 # Setup the public facing server (NGINGX)
+sudo apt install nginx
 
 # CAREFUL HERE. If you are using default, maybe skip this
 sudo rm /etc/nginx/sites-enabled/default
