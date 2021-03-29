@@ -3,7 +3,7 @@
 waitress==1.4.3
 Mako==1.0.7
 MarkupSafe==1.0
-Pygments==2.2.0
+Pygments==2.7.4
 pyramid-debugtoolbar==4.4
 pyramid-mako==1.0.2
 WebTest==2.0.29 

@@ -16,7 +16,7 @@ plaster-pastedeploy==0.5
 pluggy==0.6.0
 progressbar2==3.38.0
 py==1.5.3
-Pygments==2.2.0
+Pygments==2.7.4
 pyGravatar==0.0.6
 pymongo==3.6.1
 pyramid==1.9.2
