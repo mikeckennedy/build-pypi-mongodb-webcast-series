@@ -1,7 +1,7 @@
 -r requirements.txt
 
 waitress==2.1.2
-Mako==1.0.7
+Mako==1.2.2
 MarkupSafe==1.0
 Pygments==2.7.4
 pyramid-debugtoolbar==4.4
